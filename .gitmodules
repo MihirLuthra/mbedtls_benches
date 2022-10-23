@@ -1,0 +1,3 @@
+[submodule "rust-mbedtls"]
+	path = rust-mbedtls
+	url = git@github.com:MihirLuthra/rust-mbedtls.git

@@ -1,0 +1,27 @@
+[package]
+name = "mbedtls_benches"
+version = "0.1.0"
+edition = "2021"
+
+[package.metadata.fortanix-sgx]
+stack-size = 0x200000
+threads = 20
+
+[dependencies]
+structopt = { version = "0.3.26", default-features = false }
+strum = { version = "0.24.1", features = ["derive"] }
+rand = { version = "0.8.5", default-features = false, features = ["small_rng"] }
+once_cell = "1.15.0"
+
+[dependencies.mbedtls]
+version = "0.8.2"
+features = ["rdrand"]
+path = "./rust-mbedtls/mbedtls"
+
+[dependencies.mbedtls-sys-auto]
+version = "2.28.0"
+path = "./rust-mbedtls/mbedtls-sys"
+default-features = false
+
+[patch.crates-io]
+clap = { git = "https://github.com/MihirLuthra/clap.git", branch = "mihir/clap-sgx-quick-port" }
