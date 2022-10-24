@@ -4,18 +4,19 @@ use strum::{EnumString, Display};
 pub struct Operation<B, O, A> {
     pub operation_type: OperationType,
 
-    /// Closure to execute before threads are spawned.
+    /// Closure to execute before timer is started.
     /// This closure returns a state that will be
     /// given muatbly to each iteration of `operation`
     /// and also to `after` which gets executed after
-    /// threads are done.
+    /// timer is stopped.
     pub before: B,
 
     /// Maybe executed multiple times. Gets state returned by
     /// `before` as input, if any.
+    /// These operations run after timer has been started.
     pub operation: O,
 
-    /// Executed once after threads are done. Gets state returned
+    /// Executed once after timer is stopped. Gets state returned
     /// by `before` as input, if any.
     pub after: A,
 }
